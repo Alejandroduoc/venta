@@ -1,8 +1,9 @@
+
 import { Router } from 'express';
-import { insertSale } from '../controllers/ventas.controller';
+import { createSale } from '../controllers/ventas.controller';
 
 const router = Router();
 
-router.post('/ventas', insertSale);
+router.post('/ventas', createSale);
 
 export default router;
