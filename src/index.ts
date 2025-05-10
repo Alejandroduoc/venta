@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000; // Default to 3000 if PORT is not set
+const port = process.env.PORT || 3001; // Default to 3000 if PORT is not set
 
 // Middleware to parse JSON bodies
 app.use(express.json());
