@@ -2,7 +2,7 @@ import * as express from "express";
 import * as path from "path";
 
 const app = express();
-const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
+const port = process.env.PORT || 3001; // Default to 3000 if PORT is not set
 
 app.use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))

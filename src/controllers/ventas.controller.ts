@@ -17,7 +17,7 @@ export const createSale = async (req: Request, res: Response) => {
   };
 
   try {
-    const [rows] = await pool.query('INSERT INTO venta SET ?', [newSale]);
+    const [rows] = await pool.query('INSERT INTO ventas SET ?', [newSale]);
     res.status(201).json({ message: 'Sale created successfully', saleId: (rows as any).insertId });
   } catch (error) {
     console.error('Error inserting sale:', error);
