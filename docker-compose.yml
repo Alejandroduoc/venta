@@ -1,38 +1,41 @@
-version: '3.8'
+version: "3.9"
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
-      - DB_HOST=db
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-      - DB_PORT=${DB_PORT}
-      - PORT=3000
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_PASSWORD=Duoc4229@!
+      - DB_USER=ferremas
+      - DB_NAME=ferremas
     depends_on:
-      - db
-    env_file:
-      - .env
+      - mysql
 
-  db:
-    image: mysql:8.0
+  mysql:
+    image: mysql:latest
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
+      - MYSQL_ROOT_PASSWORD=Duoc4229@! # Change this!
+      - MYSQL_DATABASE=ferremas
+      - MYSQL_USER=ferremas
+      - MYSQL_PASSWORD=Duoc4229@!
     volumes:
-      - db_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD}"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8081:80" # Accede a phpMyAdmin en http://localhost:8081
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+    depends_on:
+      - mysql
 
 volumes:
-  db_data:
+  mysql_data:
