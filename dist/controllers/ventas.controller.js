@@ -24,7 +24,15 @@ const createSale = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         fecha_actual: new Date(), // Assuming fecha_actual should be the current time
     };
     try {
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         const [rows] = yield database_1.pool.query('INSERT INTO venta SET ?', [newSale]);
+=======
+        const [rows] = yield database_1.pool.query('INSERT INTO ventas SET ?', [newSale]);
+>>>>>>> Stashed changes
+=======
+        const [rows] = yield database_1.pool.query('INSERT INTO ventas SET ?', [newSale]);
+>>>>>>> Stashed changes
         res.status(201).json({ message: 'Sale created successfully', saleId: rows.insertId });
     }
     catch (error) {

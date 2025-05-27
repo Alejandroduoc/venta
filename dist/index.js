@@ -6,9 +6,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const ventas_routes_1 = __importDefault(require("./routes/ventas.routes"));
 const dotenv_1 = __importDefault(require("dotenv"));
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000; // Default to 3000 if PORT is not set
+=======
+=======
+>>>>>>> Stashed changes
+const cors_1 = __importDefault(require("cors"));
+dotenv_1.default.config();
+const app = (0, express_1.default)();
+const port = process.env.PORT || 3001; // Default to 3000 if PORT is not set
+app.use((0, cors_1.default)());
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 // Middleware to parse JSON bodies
 app.use(express_1.default.json());
 // Use the ventas routes
